@@ -13,6 +13,7 @@ Patch0:		%{name}-crypt.patch
 Prereq:		rc-inetd >= 0.8.1
 URL:		http://www.quietsche-entchen.de/software/rsh.proxy.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Conflicts:	proxytools
 
 %description
 rsh.proxy is a proxy server for remote shell protocol.
