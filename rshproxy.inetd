@@ -1,0 +1,9 @@
+SERVICE_NAME=rshproxy
+SOCK_TYPE=stream
+PROTOCOL=tcp
+PORT=10666
+FLAGS=nowait
+USER=nobody
+SERVER=tcpd
+DAEMON=/usr/sbin/rsh.proxy
+DAEMONARGS="-t 30"
