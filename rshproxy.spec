@@ -49,12 +49,12 @@ if [ -f /var/lock/subsys/rc-inetd ]; then
 else
     echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
 fi
-	
+
 %postun
 if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
     /etc/rc.d/init.d/rc-inetd reload
 fi
-	    
+    
 %files
 %defattr(644,root,root,755)
 %doc *.gz
