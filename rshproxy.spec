@@ -5,8 +5,6 @@ Version:	1.0.3
 Release:	2
 License:	GPL
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-crypt.patch
