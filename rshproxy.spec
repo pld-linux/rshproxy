@@ -14,10 +14,10 @@ Prereq:		rc-inetd >= 0.8.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-rshproxy is a proxy server for remote shell protocol.
+rsh.proxy is a proxy server for remote shell protocol.
 
 %description -l pl
-rshproxy jest aplikacyjn± bramk± dla protoko³u zdalnego shella (remote
+rsh.proxy jest aplikacyjn± bramk± dla protoko³u zdalnego shella (remote
 shell).
 
 %prep
@@ -40,6 +40,9 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/rshproxy
 
 gzip -9nf README
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post
 if [ -f /var/lock/subsys/rc-inetd ]; then
     /etc/rc.d/init.d/rc-inetd reload 1>&2
@@ -52,9 +55,6 @@ if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
     /etc/rc.d/init.d/rc-inetd reload
 fi
 	    
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
 %defattr(644,root,root,755)
 %doc *.gz
