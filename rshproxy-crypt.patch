@@ -1,0 +1,24 @@
+diff -Naur rshproxy-1.0.3.orig/makefile rshproxy-1.0.3/makefile
+--- rshproxy-1.0.3.orig/makefile	Wed Mar  8 22:05:08 2000
++++ rshproxy-1.0.3/makefile	Mon Nov 26 03:40:25 2001
+@@ -29,7 +29,7 @@
+ 	$(CC) -o $@ $(REXEC)
+ 
+ rexecd:		$(REXECD)
+-	$(CC) -o $@ $(REXECD)
++	$(CC) -o $@ $(REXECD) -lcrypt
+ 
+ 
+ tar:		clean
+diff -Naur rshproxy-1.0.3.orig/rexecd.c rshproxy-1.0.3/rexecd.c
+--- rshproxy-1.0.3.orig/rexecd.c	Thu Mar 23 04:24:36 2000
++++ rshproxy-1.0.3/rexecd.c	Mon Nov 26 03:36:08 2001
+@@ -45,6 +45,8 @@
+ #include <pwd.h>
+ #include <shadow.h>
+ 
++#include <crypt.h>
++
+ #include "rexecd.h"
+ #include "ip-lib.h"
+ #include "lib.h"
