@@ -7,7 +7,7 @@ License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
-Source0:	http://www.quietsche-entchen.de/download/rshproxy-%{version}.tar.gz
+Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-crypt.patch
 Prereq:		rc-inetd >= 0.8.1
@@ -19,8 +19,8 @@ Conflicts:	proxytools
 rsh.proxy is a proxy server for remote shell protocol.
 
 %description -l pl
-rsh.proxy jest aplikacyjn± bramk± dla protoko³u zdalnego shella (remote
-shell).
+rsh.proxy jest aplikacyjn± bramk± dla protoko³u zdalnego shella
+(remote shell).
 
 %prep
 %setup -q
@@ -47,19 +47,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 if [ -f /var/lock/subsys/rc-inetd ]; then
-    /etc/rc.d/init.d/rc-inetd reload 1>&2
+	/etc/rc.d/init.d/rc-inetd reload 1>&2
 else
-    echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
+	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
 fi
 
 %postun
 if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
-    /etc/rc.d/init.d/rc-inetd reload
+	/etc/rc.d/init.d/rc-inetd reload
 fi
     
 %files
 %defattr(644,root,root,755)
 %doc *.gz
+%attr(640,root,root) %config %verify(not size mtime md5) /etc/sysconfig/rc-inetd/rshproxy
 %attr(755,root,root) %{_sbindir}/rsh.proxy
 %{_mandir}/man1/*
-%attr(640,root,root) %config %verify(not size mtime md5) /etc/sysconfig/rc-inetd/rshproxy
