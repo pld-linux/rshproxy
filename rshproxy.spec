@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
+# Source0-md5:	eb147a7adf67185e3e7098f62ad1ddd0
 Source1:	%{name}.inetd
 Patch0:		%{name}-crypt.patch
 Prereq:		rc-inetd >= 0.8.1
