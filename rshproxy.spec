@@ -9,10 +9,11 @@ Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 # Source0-md5:	eb147a7adf67185e3e7098f62ad1ddd0
 Source1:	%{name}.inetd
 Patch0:		%{name}-crypt.patch
-Prereq:		rc-inetd >= 0.8.1
 URL:		http://www.quietsche-entchen.de/software/rsh.proxy.html
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	rpmbuild(macros) >= 1.268
+Requires:	rc-inetd >= 0.8.1
 Conflicts:	proxytools
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 rsh.proxy is a proxy server for remote shell protocol.
@@ -44,15 +45,11 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/rshproxy
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun
-if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = "0" ]; then
+	%service -q rc-inetd  reload
 fi
 
 %files
