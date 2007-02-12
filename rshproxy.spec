@@ -1,5 +1,5 @@
 Summary:	rshproxy is an application level gateway for the remote shell protocol
-Summary(pl.UTF-8):   rshproxy jest aplikacyjną bramką dla protokołu remote shell
+Summary(pl.UTF-8):	rshproxy jest aplikacyjną bramką dla protokołu remote shell
 Name:		rshproxy
 Version:	1.0.3
 Release:	3
